@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"> 
+<h:head>
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" ></link>
+	<script src="bootstrap/js/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<title>#{msgs['site.titre']}</title>
+</h:head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+			<h1>Contacts</h1>
+	<div id="resultat">
+	<h:dataTable value="#{research.tableau}" var="contact" styleClass="table table-striped">
+			<h:column>
+				<f:facet name="header">#{msgs['contact.id']}</f:facet>
+				<h:outputText value="#{contact.id}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">#{msgs['contact.nom']}</f:facet>
+				<h:outputText value="#{contact.nom}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">#{msgs['contact.prenom']}</f:facet>
+				<h:outputText value="#{contact.prenom}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">#{msgs['contact.email']}</f:facet>
+				<h:outputText value="#{contact.email}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">#{msgs['adresse.titre']}</f:facet>
+					#{contact.adresse.nomRue}<br/>
+					#{contact.adresse.ville}<br/>
+					#{contact.adresse.cp}<br/>
+					#{contact.adresse.pays}<br/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">#{msgs['telephone.titre']}</f:facet>
+				<h:dataTable value="#{contact.profiles}" var="telephone">
+					<h:column>
+						#{telephone.numTelephone}<br/>
+						#{telephone.phoneKind}
+					</h:column>
+				</h:dataTable>		
+			</h:column>
+			<h:column>
+				<f:facet name="header">#{msgs['entreprise.titre']}</f:facet>
+				<h:outputText value="#{research.getNumSiretContact(contact.id)}"/>
+			</h:column>
+			<h:column>
+				<f:facet name="header">#{msgs['groupe.titre']}</f:facet>
+				<h:dataTable value="#{contact.groupe}" var="groupe">
+					<h:column>
+						#{groupe.groupeId}<br/>
+						#{groupe.nomGroupe}
+					</h:column>
+				</h:dataTable>		
+			</h:column>
+			<h:column>
+				<h:form>
+				<h:commandButton value="#{msgs['update.bouton.maj']}" action="#{updateResearch.maj}" styleClass="btn btn-default" >
+					<f:setPropertyActionListener value="#{contact}" target="#{updateResearch.contactAmettreAjour}"></f:setPropertyActionListener>
+				</h:commandButton>
+			</h:form>
+			</h:column>
+	</h:dataTable>
+	</div>
+	</div>
+	</div>
+</div>
+	<a href="Main.jsf">#{msgs['message.retourmenu']}</a>
+</body>
+</html>

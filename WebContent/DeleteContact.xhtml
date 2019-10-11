@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"> 
+<h:head>
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" ></link>
+	<script src="bootstrap/js/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<h1>#{msgs['main.contact.supprimer']}</h1>
+	<style type="text/css">
+	    .partie
+	    {
+	    	margin-right:1%;
+	    }
+	    h1
+	    {
+	    	text-align:center;
+	    }
+	</style>
+</h:head>
+<body>
+	<h:form styleClass="form-horizontal">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="form-group">
+						<label class="control-label">#{msgs['suppression.id']} : </label>						
+						<h:inputText id="id" styleClass="form-control"
+							value="#{delete.id}"
+							required="true"
+							requiredMessage="#{msgs['error.userID.required']}">
+							<f:validator validatorId="idContactValidator"/>
+						</h:inputText>
+						<h:message for="id" styleClass="error"/>							
+					</div>
+				</div>		
+				<div class="row">
+					<div class="col-md-4 col-md-offset-5">
+						<h:commandButton styleClass="btn btn-default" value="#{msgs['suppression.bouton.supprimer']}" action="#{delete.maj}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:form>
+</body>
+</html>

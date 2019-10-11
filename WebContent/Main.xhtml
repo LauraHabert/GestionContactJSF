@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"> 
+<h:head>
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" ></link>
+	<script src="bootstrap/js/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<title>#{msgs['site.titre']}</title>
+	<style type="text/css">
+	  .center
+	  {
+	    margin-top:10%;
+	  }
+	</style>
+</h:head>
+<body>
+	<f:view locale="#{facesContext.externalContext.requestLocale}">
+	<div class="row center">
+		<div class="col-md-4 col-md-offset-4">
+			<h1>Menu</h1>
+				<a href="CreateContact.jsf" class="btn btn-default btn-lg btn-block" role="button">
+					#{msgs['main.contact.ajouter']}
+				</a>
+				<a href="ResearchContact.jsf" class="btn btn-default btn-lg btn-block" role="button">
+					#{msgs['main.contact.rechercher']}
+				</a>
+				<a href="UpdateContact.jsf" class="btn btn-default btn-lg btn-block" role="button">
+					#{msgs['main.contact.maj']}
+				</a>
+				<a href="DeleteContact.jsf" class="btn btn-default btn-lg btn-block" role="button">
+					#{msgs['main.contact.supprimer']}
+				</a>
+		</div>
+	</div>
+	</f:view>
+</body>
+</html>

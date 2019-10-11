@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"> 
+<h:head>
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" ></link>
+	<script src="bootstrap/js/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<title>#{msgs['site.titre']}</title>
+	<style type="text/css">
+	    .partie
+	    {
+	    	margin-right:2%;
+	    	margin-left:5%;
+	    }
+	    h1,h2
+	    {
+	    	text-align:center;
+	    }
+	    table,tr
+	    {
+	    	width:100%;
+	    }
+	    .bouton_rechercher
+	    {
+	    	margin-left: 5%;
+	    	width: 95%;
+	    }
+	</style>
+</h:head>
+<body>
+	<h:form styleClass="form-horizontal">
+		<div class="container">
+			<div class="row">
+				<h1>#{msgs['update.titre']}</h1>
+				<div class="col-md-5 partie">
+				<h2>#{msgs['creation.infoperso']}</h2>
+					<div class="form-group">
+						<label class="control-label">#{msgs['contact.id']} : </label>
+						<table>	
+							<tr>
+								<td>			
+								<h:inputText id="id" styleClass="form-control" value="#{update.id}" required="true" requiredMessage="#{msgs['error.userID.required']}">
+									<f:validator validatorId="idContactValidator"/>
+								</h:inputText>
+								</td>
+								<td>
+									<a href="ResearchContact.jsf" class="btn btn-default bouton_rechercher" role="button">
+										#{msgs['main.contact.rechercher']}
+									</a>
+								</td>
+							</tr>
+						</table>	
+						<h:message for="id" styleClass="error"/>						
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">#{msgs['contact.nom']} : </label>						
+						<h:inputText id="nom" styleClass="form-control"
+							value="#{update.nom}"
+						/>
+						<h:message for="nom" styleClass="error"/>						
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">#{msgs['contact.prenom']} : </label>						
+						<h:inputText id="prenom" styleClass="form-control"
+							value="#{update.prenom}"
+
+						/>
+						<h:message for="prenom" styleClass="error"/>						
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">#{msgs['contact.email']} : </label>						
+						<h:inputText id="email" styleClass="form-control" value="#{update.email}">
+							<f:validator validatorId="emailAddressValidator"/>
+						</h:inputText>
+						<h:message for="email" styleClass="error"/>						
+					</div>					
+				</div>
+				<div class="col-md-5 partie">
+					<h2>#{msgs['creation.adresse']}</h2>
+					<div class="form-group">
+						<label class="control-label">#{msgs['adresse.rue']}</label>
+						<h:inputText id="nomRue" styleClass="form-control" value="#{update.nomRue}"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label">#{msgs['adresse.ville']}</label>
+						<h:inputText id="ville" styleClass="form-control" value="#{update.ville}"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label">#{msgs['adresse.cp']}</label>
+						<h:inputText id="cp" styleClass="form-control" value="#{update.cp}">
+							<f:validator validatorId="cpValidator"/>
+						</h:inputText>
+						<h:message for="cp" styleClass="error"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label">#{msgs['adresse.pays']}</label>
+						<h:inputText id="pays" styleClass="form-control" value="#{update.pays}"/>
+					</div>
+				</div>				
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<h:commandButton styleClass="btn btn-default" value="#{msgs['update.bouton.maj']}" action="#{update.maj}"/>
+					<h:commandButton styleClass="btn btn-default" value="#{msgs['update.bouton.reset']}" action="#{update.reset}"/>
+				</div>
+			</div>	
+		</div>
+	</h:form>
+</body>
+</html>

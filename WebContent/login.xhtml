@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"> 
+<h:head>
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" ></link>
+	<script src="bootstrap/js/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<title>#{msgs['site.titre']}</title>
+	<style type="text/css">
+	  .center
+	  {
+	    margin-top:10%;
+	  }
+	</style>
+</h:head>
+<body>
+	<f:view locale="#{facesContext.externalContext.requestLocale}">
+	<div class="container-fluid">
+		<h:form styleClass="form-horizontal">
+		<div class="row center">
+			<div class="col-md-4 col-md-offset-4">
+				<h1>#{msgs['site.bienvenue']}</h1>
+					<div class="col-md-offset-1">
+						<div class="form-group">
+							<label><h:outputFormat value="#{msgs['login.id']}"/></label>
+							<h:inputText 
+							value="#{login.name}"
+							styleClass="form-control"
+							required="true"
+							requiredMessage="#{msgs['error.userName.required']}"
+							id="name"/>
+							<h:message for="name" styleClass="error"/>
+						</div>
+						<div class="form-group">
+							<label><h:outputFormat value="#{msgs['login.mdp']}"/></label>
+							<h:inputSecret 
+							value="#{login.password}"
+							styleClass="form-control"
+							required="true"
+							requiredMessage="#{msgs['error.userPassword.required']}"
+							id="password"
+							/>
+							<h:message for="password" styleClass="error"/>
+						</div>
+						<h:messages />
+						<div class="form-group">
+							<h:commandButton styleClass="btn btn-default" value="#{msgs['login.bouton.connexion']}" 
+							action="#{login.connexion}"/>
+						</div>
+					</div>
+			</div>
+		</div>
+		</h:form>
+	</div>
+	</f:view>
+</body>
+</html>

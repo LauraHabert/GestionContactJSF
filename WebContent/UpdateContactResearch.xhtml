@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"> 
+<h:head>
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" ></link>
+	<script src="bootstrap/js/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<title>#{msgs['site.titre']}</title>
+	<style type="text/css">
+	    .partie
+	    {
+	    	margin-right:1%;
+	    }
+	    h1
+	    {
+	    	text-align:center;
+	    }
+	</style>
+</h:head>
+<body>
+	<h:form styleClass="form-horizontal">
+		<div class="container">
+			<div class="row">
+				<h1>#{msgs['update.titre']}</h1>
+				<div class="col-md-4 partie">
+				<h2>#{msgs['creation.infoperso']}</h2>
+					<div class="form-group">
+						<label class="control-label">#{msgs['contact.id']} : </label>		
+						<h:inputText id="id" styleClass="form-control"
+							value="#{updateResearch.id}"
+							required="true"
+							requiredMessage="#{msgs['error.userID.required']}"
+						/>
+						<h:message for="id" styleClass="error"/>						
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">#{msgs['contact.nom']} : </label>						
+						<h:inputText id="nom" styleClass="form-control"
+							value="#{updateResearch.nom}"
+							required="true"
+							requiredMessage="#{msgs['error.formulaire.nom']}"
+						/>
+						<h:message for="nom" styleClass="error"/>						
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">#{msgs['contact.prenom']} : </label>						
+						<h:inputText id="prenom" styleClass="form-control"
+							value="#{updateResearch.prenom}"
+							required="true"
+							requiredMessage="#{msgs['error.formulaire.prenom']}"
+						/>
+						<h:message for="prenom" styleClass="error"/>						
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">#{msgs['contact.email']} : </label>						
+						<h:inputText id="email" styleClass="form-control" value="#{updateResearch.email}">
+							<f:validator validatorId="emailAddressValidator"/>
+						</h:inputText>
+						<h:message for="email" styleClass="error"/>						
+					</div>
+										<h2>#{msgs['telephone.titre']}</h2>
+					<div>
+						<h:dataTable value="#{updateResearch.listTelephone}" var="telephone" styleClass="table">
+							<h:column><h:outputText value="#{telephone.numTelephone}"/></h:column>
+							<h:column><h:outputText value="#{telephone.phoneKind}"/></h:column>
+							<h:column><h:commandButton value="Supprimer" action="#{updateResearch.supprimerTelephone(telephone)}" styleClass="btn btn-default"/></h:column>
+						</h:dataTable>
+					</div>	
+					<div class="form-group">
+						<label class="control-label">#{msgs['telephone.num']}</label>
+						<h:inputText id="numTelephone" styleClass="form-control" styleId="numTelephone" value="#{updateResearch.numTelephone}">
+							<f:validator validatorId="numTelephoneValidator"/>
+						</h:inputText>
+						<h:message for="numTelephone" styleClass="error"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label">#{msgs['telephone.phoneKind']}</label>
+						<h:inputText id="phoneKind" styleClass="form-control" styleId="phoneKind" value="#{updateResearch.phoneKind}"/>
+					</div>
+					<div class="form-group">
+						<h:commandButton value="#{msgs['creation.bouton.ajoutertelephone']}" styleClass="btn btn-default" action="#{updateResearch.ajouterTelephone}"/>
+					</div>						
+				</div>
+				<div class="col-md-4 partie">
+					<h2>#{msgs['creation.adresse']}</h2>
+					<div class="form-group">
+						<label class="control-label">#{msgs['adresse.rue']}</label>
+						<h:inputText id="nomRue" styleClass="form-control" value="#{updateResearch.nomRue}"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label">#{msgs['adresse.ville']}</label>
+						<h:inputText id="ville" styleClass="form-control" value="#{updateResearch.ville}"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label">#{msgs['adresse.cp']}</label>
+						<h:inputText id="cp" styleClass="form-control" value="#{updateResearch.cp}">
+							<f:validator validatorId="cpValidator"/>
+						</h:inputText>
+						<h:message for="cp" styleClass="error"/>
+					</div>
+					<div class="form-group">
+						<label class="control-label">#{msgs['adresse.pays']}</label>
+						<h:inputText id="pays" styleClass="form-control" value="#{updateResearch.pays}"/>
+					</div>
+					<h2>#{msgs['creation.groupe']}</h2>
+					<div>
+						<h:dataTable value="#{updateResearch.listGroupe}" var="groupe" styleClass="table">
+							<h:column><h:outputText value="#{groupe.groupeId}"/></h:column>
+							<h:column><h:outputText value="#{groupe.nomGroupe}"/></h:column>
+							<h:column><h:commandButton value="Supprimer" action="#{updateResearch.supprimerGroupe(groupe)}" styleClass="btn btn-default"/></h:column>
+						</h:dataTable>
+					</div>
+				<div class="form-group">
+						<label class="control-label">#{msgs['groupe.id']}</label>
+						<h:inputText id="idGroupe" styleClass="form-control" styleId="idGroupe" value="#{updateResearch.idGroupe}">
+							<f:validator validatorId="idGroupeValidator"/>
+						</h:inputText>
+						<h:message for="idGroupe" styleClass="error"></h:message>
+					</div>
+					<div class="form-group">
+						<label class="control-label">#{msgs['groupe.nom']}</label>
+						<h:inputText id="nomGroupe" styleClass="form-control" styleId="nomGroupe" value="#{updateResearch.nomGroupe}"/>
+					</div>
+					<div class="form-group">
+						<h:commandButton value="#{msgs['creation.bouton.ajoutergroupe']}" styleClass="btn btn-default" action="#{updateResearch.ajouterGroupe}"/>
+					</div>
+				</div>	
+				
+				<div class="col-md-3">	
+					<h2>#{msgs['entreprise.titre']}</h2>
+					<div class="form-group">
+						<label class="control-label">#{msgs['entreprise.numsiret']}</label>
+						<h:inputText id="numSiret" styleClass="form-control" styleId="numSiret" value="#{updateResearch.numSiret}"/>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<h:commandButton styleClass="btn btn-default" value="#{msgs['update.bouton.maj']}" action="#{updateResearch.majContact}"/>
+					<h:commandButton styleClass="btn btn-default" value="#{msgs['update.bouton.reset']}" action="#{updateResearch.reset}"/>
+				</div>
+			</div>	
+		</div>
+	</h:form>
+</body>
+</html>
